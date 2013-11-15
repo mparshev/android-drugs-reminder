@@ -266,7 +266,7 @@ public class DrugsData extends ContentProvider {
 			return rows;
 		case INTAKES_ROW_QUERY:
 			rows = mDataHelper.getWritableDatabase().update(INTAKES.TABLE, values, 
-					INTAKES._ID + " = " + Long.valueOf(uri.getLastPathSegment()), null);
+					INTAKES._ID + " = " + uri.getLastPathSegment(), null);
 			if(rows > 0) getContext().getContentResolver().notifyChange(INTAKES.URI, null);
 			return rows;
 		}
