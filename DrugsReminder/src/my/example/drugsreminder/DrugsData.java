@@ -45,7 +45,7 @@ public class DrugsData extends ContentProvider {
 				_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
 				DRUG + " TEXT, " + 
 				DOSAGE + " TEXT, " + 
-				QUANTITY + " INTEGER, " +
+				QUANTITY + " TEXT, " +
 				DIRECTIONS + " INTEGER, " + 
 				MORNING + " INTEGER, " +
 				AFTERNOON + " INTEGER, " +
@@ -79,8 +79,7 @@ public class DrugsData extends ContentProvider {
 				DATE + " INTEGER, " + 
 				TIME + " INTEGER, " +
 				DRUG + " TEXT, " + 
-				DOSAGE + " TEXT, " + 
-				QUANTITY + " INTEGER, " +
+				QUANTITY + " TEXT, " +
 				DIRECTIONS + " INTEGER, " + 
 				TAKEN + " BOOLEAN," +
 				" UNIQUE (" + DRUG_ID + "," + DATE + "," + TIME + ")" + ")";
@@ -152,7 +151,7 @@ public class DrugsData extends ContentProvider {
 		switch(sUriMatcher.match(uri)) {
 		case DRUGS_QUERY:
 			Cursor cursor = mDataHelper.getReadableDatabase()
-					.query(DRUGS.TABLE, null, null, null, null, null, null);
+					.query(DRUGS.TABLE, null, null, null, null, null, DRUGS.DRUG);
 			cursor.setNotificationUri(getContext().getContentResolver(), DRUGS.URI);
 			return cursor;
 		case DRUGS_ROW_QUERY:
@@ -167,7 +166,7 @@ public class DrugsData extends ContentProvider {
 				throw new RuntimeException("Invalid arguments for INTAKES_QUERY");
 			}
 			cursor = mDataHelper.getReadableDatabase().query(INTAKES.TABLE, null, 
-							selection, selectionArgs, null, null, null);
+							selection, selectionArgs, null, null, INTAKES.DIRECTIONS);
 			return cursor;
 		case INTAKES_ROW_QUERY:
 			return mDataHelper.getReadableDatabase()
@@ -186,8 +185,8 @@ public class DrugsData extends ContentProvider {
 				values.put(INTAKES.DRUG_ID, getLong(cursor, DRUGS._ID));
 				
 				values.put(INTAKES.DRUG, getString(cursor, DRUGS.DRUG));
-				values.put(INTAKES.DOSAGE, getFloat(cursor, DRUGS.DOSAGE));
-				values.put(INTAKES.QUANTITY, getInt(cursor, DRUGS.QUANTITY));
+				//values.put(INTAKES.DOSAGE, getFloat(cursor, DRUGS.DOSAGE));
+				values.put(INTAKES.QUANTITY, getString(cursor, DRUGS.QUANTITY) + "x" + getString(cursor, DRUGS.DOSAGE));
 				values.put(INTAKES.DIRECTIONS, getInt(cursor, DRUGS.DIRECTIONS));
 			
 				Date fromDate = getDate(cursor, DRUGS.FROM_DATE);
@@ -314,11 +313,13 @@ public class DrugsData extends ContentProvider {
 		return cursor.getLong(columnIndex);
 	}
 	
+	/*
 	public static float getFloat(Cursor cursor, String columnName) {
 		int columnIndex = cursor.getColumnIndex(columnName);
 		if(cursor.isNull(columnIndex)) return 0;
 		return cursor.getFloat(columnIndex);
 	}
+	*/
 	
 	public static boolean getBoolean(Cursor cursor, String columnName) {
 		int columnIndex = cursor.getColumnIndex(columnName);

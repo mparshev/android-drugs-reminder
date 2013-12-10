@@ -114,8 +114,7 @@ public class IntakesListFragment extends ListFragment
 			((TextView)view.findViewById(R.id.intake_drug)).setText(
 					DrugsData.getString(cursor, DrugsData.INTAKES.DRUG));
 			((TextView)view.findViewById(R.id.intake_qtty)).setText(
-					DrugsData.getInt(cursor, DrugsData.INTAKES.QUANTITY) +
-					"x" + DrugsData.getFloat(cursor, DrugsData.INTAKES.DOSAGE));
+					DrugsData.getString(cursor, DrugsData.INTAKES.QUANTITY));
 			((TextView)view.findViewById(R.id.intake_directions)).setText(
 					context.getResources().getStringArray(R.array.directions)
 						[DrugsData.getInt(cursor, DrugsData.INTAKES.DIRECTIONS)]);

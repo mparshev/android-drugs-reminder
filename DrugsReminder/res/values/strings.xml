@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">Таблеточки</string>
@@ -6,6 +5,16 @@
     <string name="hello_world">Hello world!</string>
     <string name="empty_list">Список пуст</string>
     <string name="action_new">Создать</string>
+    <string name="action_accept">Сохранить</string>
+    <string name="action_cancel">Отменить</string>
+    <string name="morning">Утро</string>
+    <string name="afternoon">День</string>
+    <string name="evening">Вечер</string>
+    <string name="action_intakes">Расписание</string>
+    <string name="action_drugs">Список</string>
+    <string name="pick_a_date">&lt;выбрать></string>
+    <string name="notification_text">Не забудьте принять таблетки</string>
+    <string name="alarms_enabled">Включить напоминания</string>
     <string-array name="directions">
         <item >нет указаний</item>
         <item >перед едой</item>
@@ -13,15 +22,5 @@
         <item >после еды</item>
         <item >перед сном</item>
     </string-array>
-        <string name="action_accept">Сохранить</string>
-        <string name="action_cancel">Отменить</string>
-        <string name="morning">Утро</string>
-        <string name="afternoon">День</string>
-        <string name="evening">Вечер</string>
-            <string name="action_intakes">Расписание</string>
-            <string name="action_drugs">Список</string>
-            <string name="pick_a_date">&lt;выбрать></string>
-            <string name="notification_text">Не забудьте принять таблетки</string>
-            <string name="alarms_enabled">Включить напоминания</string>
-
+    
 </resources>
