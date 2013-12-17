@@ -92,7 +92,9 @@ public class IntakesPagerFragment extends Fragment {
 
 		@Override
 		public CharSequence getPageTitle(int position) {
-			return DateFormat.getDateFormat(getActivity()).format(getPageDate(position)) + 
+			//return DateFormat.getDateFormat(getActivity()).format(getPageDate(position)) + 
+			//		" " + getString(timeResIds[position % 3]);
+			return DateFormat.format("cccc dd.MM", getPageDate(position)) + 
 					" " + getString(timeResIds[position % 3]);
 		}
 		
